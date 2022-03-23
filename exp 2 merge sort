@@ -1,1 +1,53 @@
+import time
+import random
+import matplotlib.pyplot as plt
+def merge(a1,a2):
+    c=[]
+    x=0
+    y=0
+    while(x<len(a1) and y<len(a2)):
+        if(a1[x]<a2[y]):
+            c.append(a1[x])
+            x+=1
+        else:
+            c.append(a2[y])
+            y+=1
+        while(x<len(a1)):
+            c.append(a1[x])
+            x+=1
+        while(y<len(a2)):
+            c.append(a2[y])
+            y+=1
+        return c
 
+def mergesort(array):
+    if(len(array)==1):
+        return array
+    mid=(len(array))//2
+    a1=mergesort(array[:mid])
+    a2=mergesort(array[mid:])
+    return merge(a1,a2)
+    
+array=[]
+k=[]
+l=[]
+def list_c(len):
+    j=[]
+    for a in range(len):
+        j=j+[random.randint(100,2000)]
+    return j
+    
+for i in range(100,2000):
+    start=time.time()
+    (mergesort(list_c(i)))
+    time.sleep(0)
+    end=time.time()
+    p=end-start
+    l.append(p)
+    k.append(i)
+plt.bar(k,l)
+plt.title("time vs no elements")
+plt.xlabel("no of elements")
+plt.ylabel("time taken")
+plt.show()
+print(l)
