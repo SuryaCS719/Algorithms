@@ -1,1 +1,49 @@
+# Quicksort
 
+import time
+import random
+import matplotlib.pyplot as plt
+def partition(arr,left,right):
+  start=left
+  end=right-1
+  pivot=arr[right]
+  while (start<end):
+    while (start<right and arr[start]<pivot):
+      start+=1
+    while (end>left and arr[end]>=pivot):
+      end-=1
+    if (start<end):
+      arr[start],arr[end]=arr[end],arr[start]
+  if (arr[start]>pivot):
+    arr[start],arr[right]=arr[right],arr[start]
+  return start
+
+def quicksort(arr,left,right):
+  if (left<right):
+    par=partition(arr,left,right)
+    quicksort(arr,left,par-1)
+    quicksort(arr,par+1,right)
+
+arr=[]
+k=[]
+l=[]
+def list_c(len):
+  j=[]
+  for a in range(len):
+    j=j+[random.randint(100,2000)]
+  return j
+
+for i in range(100,2000):
+  start=time.time()
+  (quicksort(list_c(i),0,len(arr)-1))
+  time.sleep(0)
+  end=time.time()
+  e=end-start
+  l.append(e)
+  k.append(i)
+plt.bar(k,l)
+plt.title("no of elements vs time")
+plt.xlabel("no of elements")
+plt.ylabel("time")
+plt.show()
+print(l)
