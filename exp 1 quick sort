@@ -5,8 +5,8 @@ import random
 import matplotlib.pyplot as plt
 def partition(arr,left,right):
   start=left
-  end=right-1
-  pivot=arr[right]
+  end=right
+  pivot=arr[start]
   while (start<end):
     while (start<right and arr[start]<pivot):
       start+=1
