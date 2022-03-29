@@ -1,34 +1,35 @@
-# Implementation of Min and Max elements of a given list
+#MinMax
 
 import time
 def minmax(a,i,j):
-  if(i==j):
-    min=max=a[i]
-    return(min,max)
-  elif(i==(j-1)):
-    if(a[i]<a[j]):
-      max=a[j];
-      min=a[i];
-    else:
-      max=a[i]
-      min=a[j]
-    return(min,max)
-  else:
-    mid=(i+j)//2
-    min1,max1=minmax(a,i,mid)
-    min2,max2=minmax(a,mid+1,j)
-  if(max1>max2):
-    max=max1
-  else:
-    max=max2
-  if(min1<min2):
-    min=min1
-  else:
-    min=min2
-  return(min,max)
-a=[913, 753, 235, 286, 583, 476]
-begin=time.time()
+	if(i==j):
+		min=max=a[i]
+		return (min,max)
+	elif(i==(j-1)):
+		if(a[i]<a[j]):
+			max=a[j]
+			min=a[i]
+		else:
+			max=a[i]
+			min-a[j]
+		return (min,max)
+	else:
+		mid=(i+j)//2
+		min1,max1=minmax(a,i,mid)
+		min2,max2=minmax(a,mid+1,j)
+		if(max1<max2):
+			max=max2
+		else:
+			max=max1
+		if(min1<min2):
+			min=min1
+		else:
+			min=min2
+		return (min,max)
+
+a=[920,930,940,950,960,999]
+start=time.time()
 print(minmax(a,0,len(a)-1))
 time.sleep(0)
 end=time.time()
-print("time taken is: ",end-begin)
+print(end-start)
